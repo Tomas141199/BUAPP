@@ -1,0 +1,35 @@
+// Globales
+
+body{
+    font-family: $font-family-sans-serif;
+}
+
+// Particulares
+.bg-primary-blue .navbar-brand{
+    color: white;
+    font-family: $font-family-sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+nav{
+    background-color: $primary-blue;
+}
+
+// Utilidades
+
+.bg-primary-blue{
+    background-color: $primary-blue;
+}
+
+.bg-secondary-blue{
+    background-color: $secondary-blue;
+}
+
+.text-primary-blue{
+    color:$primary-blue;
+}
+
+.text-secondary-blue {
+    color:$secondary-blue;
+}

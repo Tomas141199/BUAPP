@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route para la pagina principal/inicio
+Route::get('/', 'InicioController@index')->name('inicio.index');
 
 Auth::routes();
 
+//Ignorar
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user', [App\Http\Controllers\HomeController::class, 'getUser']);
+
+//Routes para el alumno
+
+Route::get('/alumno', 'AlumnoController@index')->name('alumno.index');
+
+//Routes para el admin
+Route::get('/administrador', 'AdministradorController@index')->name('administrador.index');
