@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Administrador;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdministradorController extends Controller
 {
@@ -14,7 +15,11 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        return view('administradores.index');
+        $alumnos = User::where('fullacces','no')->paginate(4);
+       // $aux = administrador::where('id', $usuario->id);
+        
+        return view('administradores.index')->with('alumnos', $alumnos);
+       
     }
 
     /**
@@ -24,7 +29,7 @@ class AdministradorController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
