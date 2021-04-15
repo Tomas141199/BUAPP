@@ -3,8 +3,7 @@
 700&display=swap);
 @charset "UTF-8";
 .footer-down {
-  margin-top: 10px;
-  position: fixed;
+  position: absolute;
   clear: 0;
   left: 0px;
   bottom: 0px;
