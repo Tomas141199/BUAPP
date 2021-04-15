@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('estilos')
 </head>
 
 <body>
@@ -53,14 +54,14 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link btn btn-info rounded-pill mr-2"
+                            <a class="nav-link btn btn-info rounded-pill mr-2 bg-secondary-blue"
                                 href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link btn btn-info rounded-pill"
+                            <a class="nav-link btn btn-info rounded-pill bg-secondary-blue"
                                 href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
@@ -88,9 +89,37 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <nav class="navbar navbar-expand-md navbar-light categorias-bg">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias"
+                    aria-controls="categorias" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                    Menu
+                </button>
+                <div class="collapse navbar-collapse " id="categorias">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav w-100 d-flex justify-content-between">
+                        @foreach ($categorias as $key)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ $key['url'] }}" target="_blank">
+                                {{ $key['nombre'] }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        @yield('hero')
+
+        <div class="container">
+            <div class="row">
+                <main class="py-4 mt-2 col-12">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
     <footer>
         @extends('layouts.footer')

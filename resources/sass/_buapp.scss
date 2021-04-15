@@ -1,10 +1,27 @@
-// Globales
 
-body{
-    font-family: $font-family-sans-serif;
-}
+// Globales
+html {
+    min-height: 100%;
+    position: relative;
+  }
+
+  body {
+    margin: 0;
+    margin-bottom: 40px;
+  }
+
+  footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;
+  }
 
 // Particulares
+
+/*Banner*/
 .bg-primary-blue .navbar-brand{
     color: white;
     font-family: $font-family-sans-serif;
@@ -14,6 +31,102 @@ body{
 
 nav{
     background-color: $primary-blue;
+}
+
+/*Carrusel*/
+
+.owl-carousel .owl-stage { display: flex; }
+.card {
+    display: flex;
+    flex: 1 0 auto;
+    height: 100%;
+}
+.card-body {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Navegacion */
+.icono {
+    width: 16px;
+}
+
+.navbar-light  {
+    .navbar-nav {
+        .nav-link{
+            color: #FFF;
+            font-size: 1.4rem;
+                &:focus,
+                &:hover {
+                    color: #FFF;
+            }
+        }
+    }
+}
+
+.titulo-categoria {
+    font-family: 'Cabin', sans-serif;
+    color: #333;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #ED4646 !important;
+    display: inline-block;
+    padding-bottom: .5rem;
+    padding-right: 2rem;
+}
+.btn-buapp,
+.btn-buapp:hover {
+    background-color: #ED4646 !important;
+    border: none;
+}
+
+.categorias-bg {
+    background-color: #fff;
+    .nav-link {
+        color: #222!important;
+        display: inline-block;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        font-size: 1.2rem!important;
+        text-transform: uppercase;
+        font-weight: bold;
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            transition: transform .5s ease;
+        }
+        &:before {
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 4px;
+          background: $primary-blue;
+          transform:  translateX(-100%);
+        }
+        &:hover:before {
+          transform:  translateX(0);
+        }
+    }
+}
+
+/* Hero */
+.hero-categorias {
+    background-image: linear-gradient(to bottom, rgba(3, 3, 3, 0.883), rgba(12, 11, 11, 0.571)),
+url('../../storage/app/public/img-buapp/hero.jpg');
+    height:30rem;
+    background-size: cover;
+    background-position: top center;
+    .texto-buscar {
+        p {
+            font-size: 1.4rem;
+            color: #FFF;
+        }
+    }
 }
 
 // Utilidades
@@ -33,3 +146,8 @@ nav{
 .text-secondary-blue {
     color:$secondary-blue;
 }
+
+.font-size-14{
+    font-size: 14;
+}
+

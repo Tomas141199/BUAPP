@@ -3,7 +3,9 @@
 700&display=swap);
 @charset "UTF-8";
 .footer-down {
+  margin-top: 10px;
   position: fixed;
+  clear: 0;
   left: 0px;
   bottom: 0px;
   width: 100%;
@@ -10950,9 +10952,26 @@ a.text-dark:focus {
   }
 }
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
+html {
+  min-height: 100%;
+  position: relative;
 }
+
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+
+/*Banner*/
 
 .bg-primary-blue .navbar-brand {
   color: white;
@@ -10963,6 +10982,109 @@ body {
 
 nav {
   background-color: #002A4C;
+}
+
+/*Carrusel*/
+
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex: 1 0 auto;
+  height: 100%;
+}
+
+.card-body {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Navegacion */
+
+.icono {
+  width: 16px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FFF;
+  font-size: 1.4rem;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #FFF;
+}
+
+.titulo-categoria {
+  font-family: "Cabin", sans-serif;
+  color: #333;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #ED4646 !important;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  padding-right: 2rem;
+}
+
+.btn-buapp,
+.btn-buapp:hover {
+  background-color: #ED4646 !important;
+  border: none;
+}
+
+.categorias-bg {
+  background-color: #fff;
+}
+
+.categorias-bg .nav-link {
+  color: #222 !important;
+  display: inline-block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  font-size: 1.2rem !important;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.categorias-bg .nav-link:before,
+.categorias-bg .nav-link:after {
+  content: "";
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.categorias-bg .nav-link:before {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: #002A4C;
+  transform: translateX(-100%);
+}
+
+.categorias-bg .nav-link:hover:before {
+  transform: translateX(0);
+}
+
+/* Hero */
+
+.hero-categorias {
+  background-image: linear-gradient(to bottom, rgba(3, 3, 3, 0.883), rgba(12, 11, 11, 0.571)), url(/images/hero.jpg?bbed7717056d31de942e02c274a7bca3);
+  height: 30rem;
+  background-size: cover;
+  background-position: top center;
+}
+
+.hero-categorias .texto-buscar p {
+  font-size: 1.4rem;
+  color: #FFF;
 }
 
 .bg-primary-blue {
@@ -10979,6 +11101,10 @@ nav {
 
 .text-secondary-blue {
   color: #01BCE7;
+}
+
+.font-size-14 {
+  font-size: 14;
 }
 
 

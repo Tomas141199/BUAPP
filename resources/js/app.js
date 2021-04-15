@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('owl.carousel');
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -30,3 +32,23 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+jQuery(document).ready(function () {
+    jQuery('.owl-carousel').owlCarousel({
+      margin: 10,
+      loop: true,
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        600: {
+          items: 2,
+        },
+        1000: {
+          items: 3,
+        },
+      },
+    });
+  });
