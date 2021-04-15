@@ -121,9 +121,7 @@
             </div>
         </div>
     </div>
-    <footer>
-        @extends('layouts.footer')
-    </footer>
-</body>
+    </div>
+    </main>
 
-</html>
+    </div>
