@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administrador;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AdministradorController extends Controller
 {
@@ -13,12 +15,22 @@ class AdministradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $alumnos = User::where('fullacces','no')->paginate(4);
-       // $aux = administrador::where('id', $usuario->id);
+    public function index(Request $request)
+    { 
+        $query=$request->get('search');
+
+        if(!empty($query))
+        {
+            $alumnos = User::where('name','LIKE','%'.$query.'%')
+            ->orderBy('id','asc')
+            ->paginate(4);
+            
+        }
+        else{
+            $alumnos = User::where('fullacces','no')->paginate(4);
+        }
         
-        return view('administradores.index')->with('alumnos', $alumnos);
+        return view('administradores.index',['alumnos' => $alumnos]);
        
     }
 

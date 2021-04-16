@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <h2 class="text-center mb-5">Lista de Alumnos </h2>
+
+<form method= "get" action="{{route('administrador.index')}}" >
+
+  <input type="search" name='search' class="form-control">
+
+  <input type="submit" class="btn btn-primary" value="Buscar">
+
+</form>
+
 <table class="table">
     <thead>
       <tr>
