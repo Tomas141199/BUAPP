@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumno;
 use Illuminate\Http\Request;
+use App\Models\ControlMateria;
+use Illuminate\Support\Facades\Auth;
 
 class AlumnoController extends Controller
 {
@@ -14,7 +16,10 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        return view('alumnos.index');
+        $alumno_id = Auth::user()->id;
+        $materias = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')->select('*')->where('control_materias.alumno_id', $alumno_id)->paginate(10);
+
+        return view('alumnos.index')->with('materias', $materias);
     }
 
     /**

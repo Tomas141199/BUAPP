@@ -16,24 +16,20 @@ class AdministradorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    { 
-        $query=$request->get('search');
-
-        if(!empty($query))
-        {
-            $alumnos = User::where('name','LIKE','%'.$query.'%')
-            ->orderBy('id','asc')
-            ->paginate(4);
-            
+    {
+        $message = -1;
+        $query = $request->get('search');
+        if (!empty($query)) {
+            $alumnos = User::where('name', 'LIKE', '%' . $query . '%')
+                ->orderBy('id', 'asc')
+                ->paginate(4);
+            $message = count($alumnos);
+        } else {
+            $alumnos = User::where('fullacces', 'no')->paginate(4);
+            $message = count($alumnos);
         }
-        else{
-            $alumnos = User::where('fullacces','no')->paginate(4);
-        }
-        
-        return view('administradores.index',['alumnos' => $alumnos]);
-       
+        return view('administradores.index', compact('alumnos', 'message'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +37,6 @@ class AdministradorController extends Controller
      */
     public function create()
     {
-       
     }
 
     /**
