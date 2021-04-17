@@ -3,12 +3,15 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 require('owl.carousel');
 
 require('./bootstrap');
 
+
 window.Vue = require('vue').default;
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,8 +23,9 @@ window.Vue = require('vue').default;
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+Vue.use(VueSweetalert2);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('error-busqueda', require('./components/ErrorBusqueda.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

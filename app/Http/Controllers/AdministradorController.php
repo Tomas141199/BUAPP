@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administrador;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AdministradorController extends Controller
 {
@@ -13,15 +15,21 @@ class AdministradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $alumnos = User::where('fullacces','no')->paginate(4);
-       // $aux = administrador::where('id', $usuario->id);
-        
-        return view('administradores.index')->with('alumnos', $alumnos);
-       
+        $message = -1;
+        $query = $request->get('search');
+        if (!empty($query)) {
+            $alumnos = User::where('name', 'LIKE', '%' . $query . '%')
+                ->orderBy('id', 'asc')
+                ->paginate(4);
+            $message = count($alumnos);
+        } else {
+            $alumnos = User::where('fullacces', 'no')->paginate(4);
+            $message = count($alumnos);
+        }
+        return view('administradores.index', compact('alumnos', 'message'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +37,6 @@ class AdministradorController extends Controller
      */
     public function create()
     {
-       
     }
 
     /**
