@@ -30,3 +30,4 @@ Route::get('/alumno/{alumno}/edit', 'AlumnoController@index')->name('alumno.edit
 
 //Routes para el admin
 Route::get('/administrador', 'AdministradorController@index')->name('administrador.index');
+Route::get('/administrador/{id}', 'AdministradorController@update')->name('administrador.update');

@@ -7,6 +7,7 @@ use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
 {
@@ -79,9 +80,13 @@ class AdministradorController extends Controller
      * @param  \App\Models\Administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrador $administrador)
+    public function update($request)
     {
-        //
+
+        $cambio=User::where('id',$request)
+        ->update(['password' =>Hash::make('alumno')]);
+
+        return view('administradores.contra',compact('cambio'));
     }
 
     /**

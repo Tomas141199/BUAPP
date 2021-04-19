@@ -31,6 +31,7 @@
       <th class="bg-primary-blue text-white" scope="col">Nombre</th>
       <th class="bg-primary-blue text-white" scope="col">Email</th>
       <th class="bg-primary-blue text-white" scope="col">Matricula</th>
+      <th class="bg-primary-blue text-white" scope="col"> Funciones </th>
     </tr>
   </thead>
   <tbody>
@@ -40,6 +41,13 @@
       <td>{{$usu->name}}</td>
       <td>{{$usu->email}}</td>
       <td>{{$usu->matricula}}</td>
+      <td>
+      <form action="{{route('administrador.update',$usu->id)}}" class="container h-100" method="get">
+      <a class="btn btn-primary" href="{{ route('administrador.index') }}">
+      {{ __('Restaurar') }}
+      </a>
+      </form>
+      </td>
     </tr>
     @endforeach
   </tbody>
