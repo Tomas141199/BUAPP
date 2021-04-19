@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <h2 class="text-center mb-5">Lista de Materias en curso</h2>
 <table class="table">
     <thead>
@@ -30,4 +29,6 @@
 <div class="col-12 mt-4 justify-content-center d-flex">
     {{ $materias->links() }}
 </div>
+
+
 @endsection

@@ -12,7 +12,6 @@ window.Vue = require('vue').default;
 
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,6 +25,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('error-busqueda', require('./components/ErrorBusqueda.vue').default);
+Vue.component('notificacion-update', require('./components/NotificacionUpdate.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

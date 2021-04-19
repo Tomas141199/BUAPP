@@ -10,10 +10,10 @@ class Materia extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function __construct()
-    {
-        $this->primaryKey = 'materia_id';
-    }
+    // public function __construct()
+    // {
+    //     $this->primaryKey = 'materia_id';
+    // }
 
     public function alumnos()
     {
