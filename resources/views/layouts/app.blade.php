@@ -72,11 +72,27 @@
                                 {{ Auth::user()->name }}
                             </a>
 
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                @if(Auth::user()->fullacces !== 'yes')
+
+                                <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                    {{ __('Inicio') }}</a>
+
+                                <a class="dropdown-item"
+                                    href="{{ route('alumno.show', ['alumno' => Auth::user()->id ]) }}">
+                                    {{ __('Mi Perfil') }}</a>
+
+
+
+                                @endif
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -129,3 +145,8 @@
     </footer>
 
     </div>
+
+    @yield('scripts')
+</body>
+
+</html>

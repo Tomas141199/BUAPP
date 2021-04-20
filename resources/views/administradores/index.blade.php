@@ -33,7 +33,6 @@
     <tr>
       <th scope="row">{{$usu->id}}</th>
       <td>{{$usu->name}}</td>
-      <td>{{$usu->email}}</td>
       <td>{{$usu->matricula}}</td>
       <td>
       <form action="{{route('administrador.update',$usu->id)}}" class="container h-100" method="get">
@@ -42,6 +41,8 @@
       </a>
       </form>
       </td>
+      <td><a class="btn btn-success w-100" href="{{ route('alumno.show', ['alumno' => $usu->alumno->id ]) }}">Ver
+          informacion</a></td>
     </tr>
     @endforeach
   </tbody>

@@ -15,6 +15,7 @@ class Materia extends Model
         $this->primaryKey = 'materia_id';
     }
 */
+
     public function alumnos()
     {
         return $this->belongsToMany(Alumno::class, 'control_materias', 'materia_id', 'alumno_id');
