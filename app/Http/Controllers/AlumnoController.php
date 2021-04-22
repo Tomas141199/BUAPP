@@ -97,7 +97,7 @@ class AlumnoController extends Controller
             'semestre' => $data['semestre']
         ]);
 
-        return redirect()->route('alumno.show', ['alumno' => Auth::user()->id])->with(['message' => 'Tu informacion se ha actualizado correctamente']);;
+        return redirect()->route('alumno.show', ['alumno' => Auth::user()->id])->with(['message' => 'Tu informacion se ha actualizado correctamente']);
     }
 
     /**

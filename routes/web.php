@@ -29,5 +29,6 @@ Route::put('/alumno/{alumno}', 'AlumnoController@update')->name('alumno.update')
 
 //Routes para el admin
 Route::get('/administrador', 'AdministradorController@index')->name('administrador.index');
+Route::get('/administrador/{alumno}', 'AdministradorController@update')->name('administrador.update');
 
 Auth::routes();

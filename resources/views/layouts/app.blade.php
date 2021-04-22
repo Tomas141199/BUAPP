@@ -59,12 +59,13 @@
                         </li>
                         @endif
 
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link btn btn-info rounded-pill bg-secondary-blue"
                                 href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                        @endif
+                        @endif --}}
+
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
@@ -84,9 +85,15 @@
                                     href="{{ route('alumno.show', ['alumno' => Auth::user()->id ]) }}">
                                     {{ __('Mi Perfil') }}</a>
 
-
-
                                 @endif
+
+                                @if(Auth::user()->fullacces == 'yes')
+                                <a class="dropdown-item"
+                                    href="{{ route('administrador.index') }}">{{ __('Inicio') }}</a>
+                                <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                @endif
+
+
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
