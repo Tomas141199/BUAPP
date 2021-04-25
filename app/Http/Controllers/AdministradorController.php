@@ -16,20 +16,10 @@ class AdministradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $message = -1;
-        $query = $request->get('search');
-        if (!empty($query)) {
-            $alumnos = User::where('name', 'LIKE', '%' . $query . '%')
-                ->orderBy('id', 'asc')
-                ->paginate(4);
-            $message = count($alumnos);
-        } else {
-            $alumnos = User::where('fullacces', 'no')->paginate(4);
-            $message = count($alumnos);
-        }
-        return view('administradores.index', compact('alumnos', 'message'));
+        $alumnos = User::where('fullacces', 'no')->get();
+        return view('administradores.index', compact('alumnos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -92,7 +82,7 @@ class AdministradorController extends Controller
                 ->paginate(4);
             $message = count($alumnos);
         } else {
-            $alumnos = User::where('fullacces', 'no')->paginate(4);
+            $alumnos = User::where('fullacces', 'no')->get();
             $message = count($alumnos);
         }
 
@@ -108,5 +98,20 @@ class AdministradorController extends Controller
     public function destroy(Administrador $administrador)
     {
         //
+    }
+
+    public function ajaxRequest(Request $request)
+    {
+        $input = $request->name;
+        $alumnos = User::select('name')->where('name', 'LIKE', '%' . $input . '%')
+            ->orderBy('id', 'asc')
+            ->get();
+        return json_encode($alumnos);
+    }
+
+    public function ajaxRequestUpdate(Request $request){
+        $cambio = User::where('id', $request->id)
+        ->update(['password' => Hash::make('cambionuevo')]);
+        return "La contrasena del alumno con id $request->id fue actualizada correctamente";
     }
 }

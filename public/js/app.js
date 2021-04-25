@@ -1917,8 +1917,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["band"],
   mounted: function mounted() {
-    console.log("hola");
-
     if (this.band == "si") {
       this.$swal({
         position: "top-end",

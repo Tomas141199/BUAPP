@@ -6,7 +6,6 @@
 export default {
   props: ["band"],
   mounted() {
-    console.log("hola");
     if (this.band == "si") {
       this.$swal({
         position: "top-end",

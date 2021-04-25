@@ -4,7 +4,7 @@
 
 <form class="" method="get" action="{{route('administrador.index')}}">
   <div class="col-12 mt-4 justify-content-center d-flex">
-    <input type="search" name='search' class="form-control" placeholder="Buscar alumno">
+    <input type="search" id="search" name='search' class="form-control" placeholder="Buscar alumno">
     <input type="submit" class="btn btn-primary" value="Buscar" />
   </div>
 </form>
@@ -29,7 +29,7 @@
       <td><a class="btn btn-success w-50" href="{{ route('alumno.show', ['alumno' => $usu->alumno->id ]) }}">Ver
           informacion</a>
         <form action="{{route('administrador.update', ['alumno' => $usu->alumno->id ])}}" method="get">
-          <input type="submit" class="btn btn-primary w-50" value="Restaurar">
+          <input type="submit" id="{{ $usu->alumno->id }}" class="btn btn-primary w-50 btnEnviar" value="Restaurar">
         </form>
       </td>
 
@@ -37,15 +37,11 @@
     @endforeach
   </tbody>
 </table>
-<div class="col-12 mt-4 justify-content-center d-flex">
-  {{ $alumnos->links() }}
-</div>
-
-@if(session('message'))
-<notificacion-update band="si"> </notificacion-update>
-@endif
 
 
+@endsection
 
-
+@section('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+@include('ajax.search')
 @endsection
