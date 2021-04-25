@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Administrador;
+use App\Models\User;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Administrador;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as AuthUser;
 
 class AdministradorController extends Controller
@@ -79,9 +80,23 @@ class AdministradorController extends Controller
      * @param  \App\Models\Administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrador $administrador)
+    public function update(Request $request)
     {
-        //
+        $cambio = User::where('id', $request['alumno'])
+            ->update(['password' => Hash::make('alumno')]);
+
+        $query = $request->get('search');
+        if (!empty($query)) {
+            $alumnos = User::where('name', 'LIKE', '%' . $query . '%')
+                ->orderBy('id', 'asc')
+                ->paginate(4);
+            $message = count($alumnos);
+        } else {
+            $alumnos = User::where('fullacces', 'no')->paginate(4);
+            $message = count($alumnos);
+        }
+
+        return redirect()->route('administrador.index')->with('alumno', $alumnos)->with(['message' => 'Tu informacion se ha actualizado correctamente']);
     }
 
     /**

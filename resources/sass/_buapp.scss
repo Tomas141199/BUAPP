@@ -54,6 +54,10 @@ nav{
     width: 16px;
 }
 
+.icono-g {
+    width: 40px;
+}
+
 .navbar-light  {
     .navbar-nav {
         .nav-link{
@@ -112,6 +116,25 @@ nav{
           transform:  translateX(0);
         }
     }
+}
+/* Input transparente */
+
+.transparent-input{
+    background-color:rgba(0,0,0,0) !important;
+    border:none !important;
+ }
+
+ /* Formula edit Alumno */
+
+ .header {
+    color: $secondary-blue;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
 }
 
 /* Hero */

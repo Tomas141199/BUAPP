@@ -18,7 +18,7 @@
 
     <div class="owl-carousel  owl-theme">
         @for($i=1 ; $i<7; $i++) <div class="card">
-            <img src="/storage/carrusel/c{{ $i }}.png" class="card-img-top" alt="imagen buap">
+            <img src="{{ asset('images\carrusel\c'.$i.'.png') }}" class="card-img-top" alt="imagen buap">
     </div>
     @endfor
 </div>

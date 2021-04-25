@@ -17,16 +17,18 @@ use Illuminate\Support\Facades\Route;
 //Route para la pagina principal/inicio
 Route::get('/', 'InicioController@index')->name('inicio.index');
 
-Auth::routes();
-
-//Ignorar
+//Ignorar Pere no borrar ni comentar
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user', [App\Http\Controllers\HomeController::class, 'getUser']);
 
 //Routes para el alumno
-
 Route::get('/alumno', 'AlumnoController@index')->name('alumno.index');
-Route::get('/alumno/{alumno}/edit', 'AlumnoController@index')->name('alumno.edit');
+Route::get('/alumno/{alumno}', 'AlumnoController@show')->name('alumno.show');
+Route::get('/alumno/{alumno}/edit', 'AlumnoController@edit')->name('alumno.edit');
+Route::put('/alumno/{alumno}', 'AlumnoController@update')->name('alumno.update');
 
 //Routes para el admin
 Route::get('/administrador', 'AdministradorController@index')->name('administrador.index');
+Route::get('/administrador/{alumno}', 'AdministradorController@update')->name('administrador.update');
+
+Auth::routes();

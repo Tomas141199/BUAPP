@@ -19,7 +19,7 @@ class AlumnoController extends Controller
         $alumno_id = Auth::user()->id;
         $materias = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')->select('*')->where('control_materias.alumno_id', $alumno_id)->paginate(10);
 
-        return view('alumnos.index')->with('materias', $materias);
+        return view('alumnos.index')->with('materias', $materias)->with('alumnoId', $alumno_id);
     }
 
     /**
@@ -51,7 +51,8 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
-        //
+
+        return view('alumnos.show')->with('alumno', $alumno);
     }
 
     /**
@@ -62,7 +63,7 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        //
+        return view('alumnos.edit', compact('alumno'));
     }
 
     /**
@@ -74,7 +75,29 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, Alumno $alumno)
     {
-        //
+        $data = request()->validate([
+            'nombre' => 'required',
+            'telefono' => 'required',
+            'semestre' => 'required',
+            'correo' => 'required',
+            'matricula' => 'required',
+        ]);
+
+        auth()->user()->name = $data['nombre'];
+        auth()->user()->email = $data['correo'];
+        auth()->user()->matricula = $data['matricula'];
+        auth()->user()->save();
+
+        unset($data['nombre']);
+        unset($data['correo']);
+        unset($data['matricula']);
+
+        auth()->user()->alumno()->update([
+            'telefono' => $data['telefono'],
+            'semestre' => $data['semestre']
+        ]);
+
+        return redirect()->route('alumno.show', ['alumno' => Auth::user()->id])->with(['message' => 'Tu informacion se ha actualizado correctamente']);
     }
 
     /**
