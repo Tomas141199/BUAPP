@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 use App\Models\ControlMateria;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Collection;
 
 class AlumnoController extends Controller
 {
@@ -17,7 +20,11 @@ class AlumnoController extends Controller
     public function index()
     {
         $alumno_id = Auth::user()->id;
-        $materias = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')->select('*')->where('control_materias.alumno_id', $alumno_id)->paginate(10);
+        $materias = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')
+            ->select('*')
+            ->where('control_materias.alumno_id', $alumno_id)
+            ->where('control_materias.estado', '!=', 'Pendiente')
+            ->paginate(10);
 
         return view('alumnos.index')->with('materias', $materias)->with('alumnoId', $alumno_id);
     }
@@ -109,5 +116,45 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         //
+    }
+
+    public function proyeccion(Alumno $alumno)
+    {
+
+        $ambas = ControlMateria::select('control_materias.materia_id')
+            ->where('control_materias.alumno_id', $alumno->id)->where('control_materias.estado', '!=', 'Pendiente')->get();
+
+        $enCurso = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')
+            ->select('materias.materia_id', 'control_materias.estado', 'materias.semestre')
+            ->where('control_materias.alumno_id', $alumno->id)->where('control_materias.estado', 'En curso')->get();
+
+        foreach ($enCurso as $mat) {
+            $sigSem = Materia::select('nombre', 'materia_id', 'semestre')->where('semestre', $mat->semestre + 1)->get();
+        }
+
+        $fCol = new Collection();
+        foreach ($sigSem as $sigMat) {
+            $items = DB::select(DB::raw('SELECT id, materia_id, prerequisito FROM prerequisitos WHERE materia_id = "' . $sigMat->materia_id . '"'));
+            foreach ($items as $item) {
+                $fCol->push($item);
+            }
+        }
+
+        $listM = new  Collection();
+        foreach ($fCol  as $key => $element) {
+            foreach ($ambas as $todas) {
+                if ($todas->materia_id == $element->prerequisito) {
+                    $listM->push($element->materia_id);
+                }
+            }
+        }
+
+        $proyeccion = new Collection();
+        foreach ($listM as $key => $element) {
+            $materia = Materia::where('materia_id', $element)->get();
+            $proyeccion->push($materia);
+        }
+
+        return view('alumnos.proyeccion', compact('proyeccion'));
     }
 }

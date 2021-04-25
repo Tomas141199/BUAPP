@@ -26,9 +26,12 @@ Route::get('/alumno', 'AlumnoController@index')->name('alumno.index');
 Route::get('/alumno/{alumno}', 'AlumnoController@show')->name('alumno.show');
 Route::get('/alumno/{alumno}/edit', 'AlumnoController@edit')->name('alumno.edit');
 Route::put('/alumno/{alumno}', 'AlumnoController@update')->name('alumno.update');
+Route::get('/alumno/{alumno}/proyeccion', 'AlumnoController@proyeccion')->name('alumno.proyeccion');
 
 //Routes para el admin
 Route::get('/administrador', 'AdministradorController@index')->name('administrador.index');
 Route::get('/administrador/{alumno}', 'AdministradorController@update')->name('administrador.update');
+Route::post('/administrador', 'AdministradorController@ajaxRequest')->name('administrador.ajaxRequest');
+Route::put('/administrador', 'AdministradorController@ajaxRequestUpdate')->name('administrador.ajaxRequestUpdate');
 
 Auth::routes();
