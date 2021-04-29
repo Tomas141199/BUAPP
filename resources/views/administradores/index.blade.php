@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menu')
 @section('content')
 <h2 class="text-center mb-5">Lista de Alumnos </h2>
 

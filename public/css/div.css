@@ -1,0 +1,22 @@
+#caja{
+  display: inline-block;
+  width: 210px;
+  height: 200px;
+  margin: 1em;
+  }
+
+  #caja2{
+    display: inline-block;
+    width: 210px;
+    height: 200px;
+    margin: 1em;
+    background: #3faa4d;
+    }
+
+  #DIV{
+    display: inline-block;
+    width: 1000px;
+    right: 200px;
+    margin-left: 100xp;
+
+  }

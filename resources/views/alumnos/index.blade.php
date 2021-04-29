@@ -1,34 +1,38 @@
+<link rel="stylesheet" href="{!! asset('css/div.css') !!}">
 @extends('layouts.app')
 
+<script src="https://kit.fontawesome.com/ed43c14ad0.js" crossorigin="anonymous"></script>
 @section('content')
-<h2 class="text-center mb-5">Lista de Materias en curso</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th class="bg-primary-blue text-white" scope="col">ID</th>
-            <th class="bg-primary-blue text-white" scope="col">Nombre</th>
-            <th class="bg-primary-blue text-white" scope="col">Estado</th>
-            <th class="bg-primary-blue text-white" scope="col">No.Creditos</th>
-            <th class="bg-primary-blue text-white" scope="col">Semestre</th>
-            <th class="bg-primary-blue text-white" scope="col">Area</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($materias as $materia)
-        <tr>
-            <th scope="row">{{$materia->idmateria}}</th>
-            <td>{{$materia->nombre}}</td>
-            <td>{{$materia->estado}}</td>
-            <td>{{$materia->creditos}}</td>
-            <td>{{$materia->semestre}}</td>
-            <td>{{$materia->area}}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-<div class="col-12 mt-4 justify-content-center d-flex">
-    {{ $materias->links() }}
-</div>
 
+<h2 class="text-center mb-3"><b>Materias en curso</b></h2>
+<div class="text-center conta">
+    <div  id="DIV" class="container-box">
+    @foreach($materias as $materia)
+        <div id="caja" class="box">
+            <i class="fas fa-book-reader icon"></i>
+            <h4 class="title">Materia:</h4>
+            <h4> {{$materia->nombre}} </h4>
+            <p id="dato">NRC: {{$materia->materia_id}} <br> 
+            Semestre: {{$materia->semestre}} </p>
+            <div class="background-hover"> </div>
+        </div>
+@endforeach
+    </div>
+</div> 
 
+<h2 class="text-center mb-3"><b>Materias finalizadas</b></h2>
+<div class="text-center conta">
+    <div  id="DIV" class="container-box">
+    @foreach($materias2 as $materia)
+        <div id="caja2" class="box">
+            <i class="fas fa-book-reader icon"></i>
+            <h4 class="title">Materia:</h4>
+            <h4> {{$materia->nombre}} </h4>
+            <p id="dato">NRC: {{$materia->materia_id}} <br> 
+            Semestre: {{$materia->semestre}} </p>
+            <div class="background-hover"> </div>
+        </div>
+@endforeach
+    </div>
+</div> 
 @endsection
