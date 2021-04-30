@@ -29,8 +29,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-primary-blue shadow-sm">
             <div class="container">
+            <img src="images\BUAPLOGO.png" alt="logo buap" width="120px" height="120px">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    BUAP
                     @if(Auth::user())
                     @if(auth()->user()->fullacces == 'yes')
                     {{ 'Administrador' }}
@@ -120,6 +121,14 @@
             </div>
         </nav>
 
+        <div class="container">
+            <div class="row">
+                <main class="py-4 mt-2 col-12">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
+
         <nav class="navbar navbar-expand-md navbar-light categorias-bg">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias"
@@ -144,13 +153,6 @@
 
         @yield('hero')
 
-        <div class="container">
-            <div class="row">
-                <main class="py-4 mt-2 col-12">
-                    @yield('content')
-                </main>
-            </div>
-        </div>
     </div>
     </div>
     </main>

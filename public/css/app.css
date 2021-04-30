@@ -11099,8 +11099,8 @@ nav {
 /* Hero */
 
 .hero-categorias {
-  background-image: linear-gradient(to bottom, rgba(3, 3, 3, 0.883), rgba(12, 11, 11, 0.571)), url(/images/hero.jpg?bbed7717056d31de942e02c274a7bca3);
-  height: 30rem;
+  background-image: linear-gradient(to bottom, rgba(3, 3, 3, 0.500), rgba(12, 11, 11, 0.571)), url(/images/fondo.jpg?bbed7717056d31de942e02c274a7bca3);
+  height: 50rem;
   background-size: cover;
   background-position: top center;
 }
