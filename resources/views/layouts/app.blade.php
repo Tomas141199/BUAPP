@@ -29,7 +29,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-primary-blue shadow-sm">
             <div class="container">
-            <img src="images\BUAPLOGO.png" alt="logo buap" width="120px" height="120px">
+            <img src="{{ asset('images\BUAPLOGO.png') }}" width="120px" height="120px" alt="logo buap">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     BUAP
                     @if(Auth::user())

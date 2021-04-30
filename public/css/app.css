@@ -11099,8 +11099,8 @@ nav {
 /* Hero */
 
 .hero-categorias {
-  background-image: linear-gradient(to bottom, rgba(3, 3, 3, 0.500), rgba(12, 11, 11, 0.571)), url(/images/fondo.jpg?bbed7717056d31de942e02c274a7bca3);
-  height: 50rem;
+  background-image: linear-gradient(to bottom, rgba(3, 3, 3, 0.5), rgba(12, 11, 11, 0.571)), url(/images/fondo.jpg?093cec1d0017ccba42e72a6f944e41c7);
+  height: 45rem;
   background-size: cover;
   background-position: top center;
 }
@@ -11128,6 +11128,150 @@ nav {
 
 .font-size-14 {
   font-size: 14;
+}
+
+.area-fgu {
+  background-color: yellow;
+}
+
+.conta {
+  max-width: 10000px;
+  margin: auto;
+}
+
+.container-box {
+  display: flex;
+}
+
+.box {
+  width: 250px;
+  height: 180px;
+  padding: 20px;
+  margin: 20px;
+  background: #002A4C;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.box:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -10px 10px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+.box h4,
+#dato,
+.icon {
+  position: relative;
+  z-index: 1;
+  transition: all 200ms;
+  color: white;
+}
+
+.box h4 {
+  font-size: 20px;
+  transform: translateY(30px);
+}
+
+.box #dato {
+  font-size: 14px;
+  transform: translateY(100px);
+  opacity: 0;
+  color: white;
+}
+
+.box .background-hover {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  top: 250px;
+  left: -170px;
+  border-radius: 100%;
+  transition: all 300ms;
+  background: linear-gradient(to bottom, #4250a1, #6767bd);
+}
+
+.box .background-hover-fgu {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  top: 250px;
+  left: -170px;
+  border-radius: 100%;
+  transition: all 300ms;
+  background: linear-gradient(to bottom, rgba(226, 205, 18, 0.876), #d4b426);
+}
+
+.box .background-hover-at {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  top: 250px;
+  left: -170px;
+  border-radius: 100%;
+  transition: all 300ms;
+  background: linear-gradient(to bottom, #4250a1, #6767bd);
+}
+
+.box .background-hover-ams {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  top: 250px;
+  left: -170px;
+  border-radius: 100%;
+  transition: all 300ms;
+  background: linear-gradient(to bottom, #b82fa5, #bd6799);
+}
+
+.box .background-hover-acb {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  top: 250px;
+  left: -170px;
+  border-radius: 100%;
+  transition: all 300ms;
+  background: linear-gradient(to bottom, #7acc1c, #65b86c);
+}
+
+.box:hover .background-hover,
+.box:hover .background-hover-fgu,
+.box:hover .background-hover-acb,
+.box:hover .background-hover-ams,
+.box:hover .background-hover-at {
+  width: 400px;
+  height: 400px;
+  top: -70px;
+  left: -70px;
+}
+
+.box:hover h4 {
+  transform: translateY(0);
+  color: white;
+}
+
+.box:hover #dato {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.box .icon {
+  font-size: 40px;
+  color: white;
+}
+
+.box:hover .icon {
+  font-size: 20px;
+  color: white;
+  transform: translateY(0);
 }
 
 

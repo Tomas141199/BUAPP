@@ -46,10 +46,13 @@
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                                    Cerrar Sesión
-                                </a>
+
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
 
                     </li>
             </nav>
@@ -58,44 +61,43 @@
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
-                <div>
-                <a href="{{ url('/') }}" class="brand-link">
-                    <img src="dist/img/BUAPPLOGO.png" alt="BUAPP Logo" class="brand-image img-circle elevation-6"
-                        style="opacity: .8">
-                    <span class="brand-text font-weight-light">BUAPP</span>
-                </a>
+                <div class="bg-primary-blue text-bold">
+                    <a href="{{ url('/') }}" class="brand-link">
+                        <img src="{{ asset('images\BUAPLOGO.png') }}" width="60px" height="60px" alt="logo buap" style="opacity: .8">
+                        BUAP
+                    </a>
                 </div>
                 <!-- Sidebar -->
-                <div class="sidebar">
+                <div class="sidebar bg-primary-blue">
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                        <img src="dist/img/trabajando.png" class="img-circle elevation-2" alt="User Image" >
+                            <img src="dist/img/trabajando.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">
-                               {{ Auth::user()->name }}
+                                {{ Auth::user()->name }}
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
-                                </form> 
+                                </form>
                             </a>
                         </div>
                     </div>
 
                     <!-- Sidebar Menu -->
-                    <nav class="bg-dark navbar-dark">
+                    <nav class="bg-primary-blue">
                         <ul class=" nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
 
                             <li class="nav-item">
-                                <a  href="/" class="{{ Request::path() === '/' ? 'nav-link active' : 'nav-link' }}">
+                                <a href="/" class="{{ Request::path() === '/' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>Inicio</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a  href="{{ route('administrador.index') }}"
+                                <a href="{{ route('administrador.index') }}"
                                     class="{{ Request::path() === 'administrador.index' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
@@ -126,26 +128,26 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <div class="container">
-            <div class="row">
-                <main class="py-4 mt-2 col-12">
-                    @yield('content')
-                </main>
+                    <div class="row">
+                        <main class="py-4 mt-2 col-12">
+                            @yield('content')
+                        </main>
+                    </div>
+                </div>
+                <!-- /.content-wrapper -->
+                <footer class="main-footer">
+
+                </footer>
+
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
             </div>
         </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
 
-            </footer>
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
-        </div>
-    </div>
-    
-    @yield('scripts')
+        @yield('scripts')
 </body>
 
 </html>
