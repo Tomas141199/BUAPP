@@ -35,6 +35,10 @@
                     <h5 class="card-title font-weight-bold">Semestre</h5>
                     <p class="card-text">{{--{{ $alumno->semestre }} --}}6</p>
 
+                    <h5 class="card-title font-weight-bold">Creditos</h5>
+                    <p class="card-text">{{--{{ $alumno->semestre }} --}}35</p>
+                    
+
                     <h5 class="card-title font-weight-bold">Correo</h5>
                     <p class="card-text">{{ $alumno->usuario->email }}</p>
 

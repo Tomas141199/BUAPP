@@ -1,0 +1,158 @@
+.conta
+{
+    max-width: 10000px;
+    margin: auto;
+    //margin-top: 100px;
+    
+}
+
+.container-box
+{
+    display: flex;
+    //flex-wrap: wrap;
+}
+
+.box
+{
+    width: 250px;
+    height: 180px;
+    padding: 20px;
+    margin: 20px;
+    background: $primary-blue;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 300ms;
+
+}
+
+.box:hover
+{
+    transform: translate(5px, -5px);
+    box-shadow: -10px 10px 20px -10px rgba(0, 0, 0, 0.5);
+
+}
+
+.box h4, #dato, .icon {
+    position: relative;
+    z-index: 1;
+    transition: all 200ms;
+    color: white;
+}
+
+.box h4
+{
+    font-size: 20px;
+    transform: translateY(30px);
+}
+
+.box #dato
+{
+    font-size: 14px;
+    transform: translateY(100px);
+    opacity: 0;
+    color:white;
+}
+
+
+.box .background-hover
+{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top: 250px;
+    left: -170px;
+    border-radius: 100%;
+    transition: all 300ms;
+    background: linear-gradient(to bottom, rgb(66, 80, 161), rgb(103, 103, 189));
+}
+
+.box .background-hover-fgu
+{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top: 250px;
+    left: -170px;
+    border-radius: 100%;
+    transition: all 300ms;
+    background: linear-gradient(to bottom, rgba(226, 205, 18, 0.876), rgb(212, 180, 38));
+}
+
+.box .background-hover-at
+{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top: 250px;
+    left: -170px;
+    border-radius: 100%;
+    transition: all 300ms;
+    background: linear-gradient(to bottom, rgb(66, 80, 161), rgb(103, 103, 189));
+}
+
+.box .background-hover-ams
+{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top: 250px;
+    left: -170px;
+    border-radius: 100%;
+    transition: all 300ms;
+    background: linear-gradient(to bottom, rgb(184, 47, 165), rgb(189, 103, 153));
+}
+
+.box .background-hover-acb
+{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top: 250px;
+    left: -170px;
+    border-radius: 100%;
+    transition: all 300ms;
+    background: linear-gradient(to bottom, rgb(122, 204, 28), rgb(101, 184, 108));
+}
+
+
+.box:hover .background-hover,.box:hover .background-hover-fgu,.box:hover .background-hover-acb,.box:hover .background-hover-ams,.box:hover .background-hover-at
+{
+    width: 400px;
+    height: 400px;
+    top: -70px;
+    left: -70px;
+
+}
+
+.box:hover h4
+{
+    transform: translateY(0);
+    color: white;
+}
+
+.box:hover #dato
+{
+    transform: translateY(0);
+    opacity: 1;
+    
+}
+
+.box .icon{
+    font-size: 40px;
+    color:white;
+}
+
+.box:hover .icon{
+    font-size: 20px;
+    color:white;
+    transform: translateY(0);
+}
+
+

@@ -33,5 +33,4 @@ Route::get('/administrador', 'AdministradorController@index')->name('administrad
 Route::get('/administrador/{alumno}', 'AdministradorController@update')->name('administrador.update');
 Route::post('/administrador', 'AdministradorController@ajaxRequest')->name('administrador.ajaxRequest');
 Route::put('/administrador', 'AdministradorController@ajaxRequestUpdate')->name('administrador.ajaxRequestUpdate');
-
 Auth::routes();

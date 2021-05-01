@@ -23,10 +23,16 @@ class AlumnoController extends Controller
         $materias = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')
             ->select('*')
             ->where('control_materias.alumno_id', $alumno_id)
-            ->where('control_materias.estado', '!=', 'Pendiente')
+            ->where('control_materias.estado', '=', 'En curso')
             ->paginate(10);
 
-        return view('alumnos.index')->with('materias', $materias)->with('alumnoId', $alumno_id);
+        $materias2 = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')
+            ->select('*')
+            ->where('control_materias.alumno_id', $alumno_id)
+            ->where('control_materias.estado', '=', 'finalizado')
+            ->paginate(10);
+
+        return view('alumnos.index')->with('materias', $materias)->with('materias2', $materias2)->with('alumnoId', $alumno_id);
     }
 
     /**
