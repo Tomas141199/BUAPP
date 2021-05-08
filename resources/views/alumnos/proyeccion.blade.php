@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.menualum')
 
 <script src="https://kit.fontawesome.com/ed43c14ad0.js" crossorigin="anonymous"></script>
 @section('content')
