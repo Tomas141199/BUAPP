@@ -110,8 +110,10 @@ class AdministradorController extends Controller
     }
 
     public function ajaxRequestUpdate(Request $request){
-        $cambio = User::where('id', $request->id)
-        ->update(['password' => Hash::make('cambionuevo')]);
+        
+        $cambio = User::where('matricula', $request->id)
+        ->update(['password' => Hash::make($request->id)]);
+
         return "La contrasena del alumno con id $request->id fue actualizada correctamente";
     }
 }

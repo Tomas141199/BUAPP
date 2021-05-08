@@ -9,6 +9,7 @@ use App\Models\ControlMateria;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Hash;
 
 class AlumnoController extends Controller
 {
@@ -31,6 +32,8 @@ class AlumnoController extends Controller
             ->where('control_materias.alumno_id', $alumno_id)
             ->where('control_materias.estado', '=', 'finalizado')
             ->paginate(10);
+
+            
 
         return view('alumnos.index')->with('materias', $materias)->with('materias2', $materias2)->with('alumnoId', $alumno_id);
     }
@@ -62,10 +65,21 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
+
     public function show(Alumno $alumno)
     {
 
-        return view('alumnos.show')->with('alumno', $alumno);
+        $creditos = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')
+        ->where('control_materias.alumno_id', $alumno->id)
+        ->where('control_materias.estado', '=', 'Finalizado')
+        ->sum('creditos');
+        $promedio= round(($creditos/284)*100,2);
+
+        $matricula = intval(substr($alumno->usuario->matricula,0,4));
+
+        $semestre = calcularsemestre($matricula);
+
+        return view('alumnos.show')->with('alumno', $alumno)->with('promedio',$promedio)->with('semestre',$semestre);
     }
 
     /**
@@ -88,10 +102,20 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, Alumno $alumno)
     {
+
+        if(isset($request['password']))
+        {
+            $pas = request()->validate([
+                'password' => 'required'
+            ]);
+    
+            auth()->user()->update(['password' => Hash::make($pas['password'])]);
+
+        }
+
         $data = request()->validate([
             'nombre' => 'required',
             'telefono' => 'required',
-            'semestre' => 'required',
             'correo' => 'required',
             'matricula' => 'required',
         ]);
@@ -99,6 +123,7 @@ class AlumnoController extends Controller
         auth()->user()->name = $data['nombre'];
         auth()->user()->email = $data['correo'];
         auth()->user()->matricula = $data['matricula'];
+
         auth()->user()->save();
 
         unset($data['nombre']);
@@ -106,8 +131,8 @@ class AlumnoController extends Controller
         unset($data['matricula']);
 
         auth()->user()->alumno()->update([
-            'telefono' => $data['telefono'],
-            'semestre' => $data['semestre']
+            'telefono' => $data['telefono']
+            
         ]);
 
         return redirect()->route('alumno.show', ['alumno' => Auth::user()->id])->with(['message' => 'Tu informacion se ha actualizado correctamente']);
@@ -163,4 +188,19 @@ class AlumnoController extends Controller
 
         return view('alumnos.proyeccion', compact('proyeccion'));
     }
+
+        
+}
+
+function calcularsemestre ($anio)
+{
+    $mes= date("n");
+    if($mes > 5)
+    {
+        $semestre= ((date("Y") - $anio)*2)+1;
+    }
+    else
+    $semestre= (date("Y") - $anio)*2;
+
+    return $semestre;
 }

@@ -33,10 +33,10 @@
                     @endif
 
                     <h5 class="card-title font-weight-bold">Semestre</h5>
-                    <p class="card-text">{{--{{ $alumno->semestre }} --}}6</p>
+                    <p class="card-text">{{ $semestre }} </p>
 
-                    <h5 class="card-title font-weight-bold">Creditos</h5>
-                    <p class="card-text">{{--{{ $alumno->semestre }} --}}35</p>
+                    <h5 class="card-title font-weight-bold">Tu progreso</h5>
+                    <p class="card-text">{{ $promedio }}%</p>
                     
 
                     <h5 class="card-title font-weight-bold">Correo</h5>

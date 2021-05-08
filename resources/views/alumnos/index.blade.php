@@ -4,6 +4,7 @@
 <script src="https://kit.fontawesome.com/ed43c14ad0.js" crossorigin="anonymous"></script>
 @section('content')
 
+
 <h2 class="text-center mb-3"><b>Materias en curso</b></h2>
 <div class="text-center conta">
     <div id="DIV" class="container-box">

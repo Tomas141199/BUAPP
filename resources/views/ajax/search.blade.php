@@ -42,6 +42,7 @@ $(function () {
     function resetearPassword(event) {
         alumno = event.target.id;
 
+       console.log(alumno);
         $.ajax({
             type: "PUT",
             url: "{{ route('administrador.ajaxRequestUpdate') }}",

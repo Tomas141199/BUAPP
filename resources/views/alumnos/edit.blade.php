@@ -68,23 +68,6 @@
 
                     <div class="form-group d-flex justify-content-center">
                         <span class="col-md-1 col-md-offset-2 text-center"><img
-                                src="{{ asset('images\iconos\semestre.png') }}" class="icono-g"></span>
-                        <div class="col-md-8">
-                            <input name="semestre" type="text" placeholder="Tu semestre"
-                                class="form-control @error('semestre') is-invalid  @enderror"
-                                value="{{ $alumno->semestre }}">
-                        </div>
-
-                    </div>
-
-                    @error('semestre')
-                    <span class="invalid-feedback d-block text-center mb-2 mt-2" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="form-group d-flex justify-content-center">
-                        <span class="col-md-1 col-md-offset-2 text-center"><img
                                 src="{{ asset('images\iconos\matricula.png') }}" class="icono-g"></span>
                         <div class="col-md-8">
                             <input name="matricula" type="text" placeholder="Tu matricula"
@@ -98,6 +81,18 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+
+                    @if (Hash::check($alumno->usuario->matricula, $alumno->usuario->password))
+                    <div class="form-group d-flex justify-content-center">
+                        <span class="col-md-1 col-md-offset-2 text-center"><img
+                                src="{{ asset('images\iconos\matricula.png') }}" class="icono-g"></span>
+                        <div class="col-md-8">
+                            <input name="password" type="password" placeholder="Tu nueva contraseña"
+                                class="form-control @error('matricula') is-invalid @enderror">
+                        </div>
+                    </div>
+                    @endif
+                   
 
                     <div class="form-group">
                         <div class="col-md-12 text-center">

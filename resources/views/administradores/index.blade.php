@@ -29,7 +29,7 @@
       <td><a class="btn btn-success w-50" href="{{ route('alumno.show', ['alumno' => $usu->alumno->id ]) }}">Ver
           informacion</a>
         <form action="{{route('administrador.update', ['alumno' => $usu->alumno->id ])}}" method="get">
-          <input type="submit" id="{{ $usu->alumno->id }}" class="btn btn-primary w-50 btnEnviar" value="Restaurar">
+          <input type="submit" id="{{ $usu->matricula}} " class="btn btn-primary w-50 btnEnviar" value="Restaurar">
         </form>
       </td>
 
