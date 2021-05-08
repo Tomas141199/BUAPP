@@ -10,7 +10,7 @@
 {"idmaterias":"CTRLC","Nombre":"Control de calidad y SW","Periodo":"7","Nivel":"Formativo","Area":"Tecnologia","Creditos":"6","Semestre":"7"},
 {"idmaterias":"DHPC","Nombre":"Desarrollo humano del pensamiento critico","Periodo":"2","Nivel":"Basico","Area":"Formacion general universitaria","Creditos":"4","Semestre":"2"},
 {"idmaterias":"DisBD","Nombre":"Diseño de base de datos","Periodo":"4","Nivel":"Basico","Area":"Modelado de sistemas","Creditos":"6","Semestre":"4"},
-{"idmaterias":"DisInt","Nombre":"Diseño de lainteraccion","Periodo":"6","Nivel":"Formativo","Area":"Tecnologia","Creditos":"6","Semestre":"6"},
+{"idmaterias":"DisInt","Nombre":"Diseño de la interaccion","Periodo":"6","Nivel":"Formativo","Area":"Tecnologia","Creditos":"6","Semestre":"6"},
 {"idmaterias":"FHM","Nombre":"Formacion humana y social","Periodo":"1","Nivel":"Basico","Area":"Formacion general universitaria","Creditos":"4","Semestre":"1"},
 {"idmaterias":"FPL","Nombre":"Fundamentos de la programcion logica","Periodo":"5","Nivel":"Formativo","Area":"Modelado de sistemas","Creditos":"4","Semestre":"5"},
 {"idmaterias":"HerraW","Nombre":"Herramientas web","Periodo":"3","Nivel":"Basico","Area":"Tecnologia","Creditos":"6","Semestre":"3"},
