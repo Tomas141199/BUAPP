@@ -195,7 +195,7 @@ class AlumnoController extends Controller
 function calcularsemestre ($anio)
 {
     $mes= date("n");
-    if($mes > 5)
+    if($mes > 7 || ($anio == date('Y')))
     {
         $semestre= ((date("Y") - $anio)*2)+1;
     }
