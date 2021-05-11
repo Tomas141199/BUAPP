@@ -5,7 +5,6 @@
 <form class="" method="get" action="{{route('administrador.index')}}">
   <div class="col-12 mt-4 justify-content-center d-flex">
     <input type="search" id="search" name='search' class="form-control" placeholder="Buscar alumno">
-    <input type="submit" class="btn btn-primary" value="Buscar" />
   </div>
 </form>
 
@@ -26,9 +25,9 @@
       <th scope="row">{{$usu->id}}</th>
       <td>{{$usu->name}}</td>
       <td>{{$usu->matricula}}</td>
-      <td><a class="btn btn-success w-50" href="{{ route('alumno.show', ['alumno' => $usu->alumno->id ]) }}">Ver
+      <td><a class="btn btn-success w-50" href="{{ route('administrador.show', ['alumno' => $usu->alumno->id ]) }}">Ver
           informacion</a>
-        <form action="{{route('administrador.update', ['alumno' => $usu->alumno->id ])}}" method="get">
+        <form method="get">
           <input type="submit" id="{{ $usu->matricula}} " class="btn btn-primary w-50 btnEnviar" value="Restaurar">
         </form>
       </td>

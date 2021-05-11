@@ -30,7 +30,7 @@ Route::get('/alumno/{alumno}/proyeccion', 'AlumnoController@proyeccion')->name('
 
 //Routes para el admin
 Route::get('/administrador', 'AdministradorController@index')->name('administrador.index');
-Route::get('/administrador/{alumno}', 'AdministradorController@update')->name('administrador.update');
 Route::post('/administrador', 'AdministradorController@ajaxRequest')->name('administrador.ajaxRequest');
 Route::put('/administrador', 'AdministradorController@ajaxRequestUpdate')->name('administrador.ajaxRequestUpdate');
+Route::get('/administrador/{alumno}', 'AdministradorController@show')->name('administrador.show');
 Auth::routes();

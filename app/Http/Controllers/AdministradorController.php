@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Alumno;
+use App\Models\ControlMateria;
 use Illuminate\Http\Request;
 use App\Models\Administrador;
 use Illuminate\Support\Facades\Hash;
@@ -47,9 +48,20 @@ class AdministradorController extends Controller
      * @param  \App\Models\Administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function show(Administrador $administrador)
+    public function show(Alumno $alumno)
     {
-        //
+        $creditos = ControlMateria::join('materias', 'control_materias.materia_id', '=', 'materias.materia_id')
+        ->where('control_materias.alumno_id', $alumno->id)
+        ->where('control_materias.estado', '=', 'Finalizado')
+        ->sum('creditos');
+        $promedio= round(($creditos/284)*100,2);
+
+        $matricula = intval(substr($alumno->usuario->matricula,0,4));
+
+        $semestre = calcularsemestre($matricula);
+
+        return view('administradores.show')->with('alumno', $alumno)->with('promedio',$promedio)->with('semestre',$semestre);
+
     }
 
     /**
@@ -116,4 +128,17 @@ class AdministradorController extends Controller
 
         return "La contrasena del alumno con id $request->id fue actualizada correctamente";
     }
+}
+
+function calcularsemestre ($anio)
+{
+    $mes= date("n");
+    if($mes > 7 || ($anio == date('Y')))
+    {
+        $semestre= ((date("Y") - $anio)*2)+1;
+    }
+    else
+    $semestre= (date("Y") - $anio)*2;
+
+    return $semestre;
 }
