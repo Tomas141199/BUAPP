@@ -1,4 +1,8 @@
 @extends('layouts.menu')
+
+@if(session('message'))
+<notificacion-update band="si"> </notificacion-update>
+@endif
 @section('content')
 <h2 class="text-center mb-5">Lista de Alumnos </h2>
 

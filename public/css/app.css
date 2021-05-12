@@ -11275,3 +11275,15 @@ nav {
 }
 
 
+.fondo-inicio {
+  background: linear-gradient(to bottom, rgba(3, 3, 3, 0.5), rgba(12, 11, 11, 0.571)), url(/images/inicio.jpg?093cec1d0017ccba42e72a6f944e41c7);
+  height: 100px;
+  background-size: cover;
+  background-position: top center;
+}
+
+.verticalLine { 
+  border-right: 2px solid #ffffff;
+  height: 40px;
+  
+}

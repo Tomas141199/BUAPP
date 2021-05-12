@@ -57,10 +57,15 @@
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
+                        <li>
+                            <a class="nav-link btn btn-info rounded-pill mr-2 bg-secondary-blue"
+                                href="{{ url('/') }}">Inicio</a> 
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link btn btn-info rounded-pill mr-2 bg-secondary-blue"
                                 href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
+                        
                         @endif
 
                         {{-- @if (Route::has('register'))
@@ -70,7 +75,12 @@
                         </li>
                         @endif --}}
 
+                        
                         @else
+
+                        <a id="navbarDropdown" class="nav-link  text-white" href="javascript:history.back()"> Regresar</a>  
+                        <div  id="navbarDropdown" class="verticalLine  "></div>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -78,9 +88,16 @@
                             </a>
 
 
+                            
+                            
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                 @if(Auth::user()->fullacces !== 'yes')
+
+                                
+                    
+                    
 
                                 <a class="dropdown-item" href="{{ route('alumno.index') }}">
                                     {{ __('Inicio') }}</a>
@@ -97,6 +114,7 @@
                                 @endif
 
                                 @if(Auth::user()->fullacces == 'yes')
+                                
                                 <a class="dropdown-item"
                                     href="{{ route('administrador.index') }}">{{ __('Inicio') }}</a>
                                 <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -129,27 +147,8 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-md navbar-light categorias-bg">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias"
-                    aria-controls="categorias" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                    Menu
-                </button>
-                <div class="collapse navbar-collapse " id="categorias">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav w-100 d-flex justify-content-between">
-                        @foreach ($categorias as $key)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ $key['url'] }}" target="_blank">
-                                {{ $key['nombre'] }}
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @yield('links')
+        
 
         @yield('hero')
 
